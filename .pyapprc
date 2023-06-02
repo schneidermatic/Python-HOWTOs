@@ -1,0 +1,22 @@
+
+#==============================================================================
+# SCRIPT:        .pyapprc
+# AUTOHR:        <Firstname, Lastname>
+# DATE:          20XX-XX-XX
+# PURPOSE:       App Configuration file for the $HOME dir.
+#==============================================================================
+
+##-----------------------------------------------
+## CONFIG
+##-----------------------------------------------
+
+## COMMON ---------------------------------------
+export PYTHONWARNINGS="ignore"
+export PYTHONPATH="/path/to/my/modules/"
+export APP_HOME="/path/to/my/app"
+
+## APP SPECIFIC ENVs ----------------------------
+export APP_NAME=DemoApp
+export APP_LOG_LEVEL="INFO"
+export APP_TEMPLATE_FOLDER="$HOME"
+export APP_TEMPLATE_FILE="template.json.j2"

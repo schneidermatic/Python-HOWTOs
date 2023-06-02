@@ -1,0 +1,70 @@
+
+#==============================================================================
+# FILE:          .xrc
+# AUTOHR:        <Firstname, Lastname>
+# DATE:          20XX-XX-XX
+# PURPOSE:       Project specific environment file.
+#==============================================================================
+
+##===============================================
+## CONFIG
+##===============================================
+set -o vi
+CWD=`pwd`
+export APPRC_FILE=".pyapprc"
+export APPRC_PATH=$HOME/$APPRC_FILE
+export APP_SILENT="false"
+
+## PYTHON SPECIFIC ENV -------------------------
+if [ -e $APPRC_PATH ]
+then
+  . $APPRC_PATH
+else
+  cp $CWD/$APPRC_FILE $HOME
+fi
+
+if [ -z "$APP_HOME" ]
+then
+  echo "Please set \$APP_HOME in '$APPRC_PATH' file !!!"
+  echo "... and source the '$' file again."
+fi
+
+##===============================================
+## CLI SHORTHAND FUNCTIONS
+##===============================================
+x_activate() { . $CWD/venv/bin/activate; }
+
+x_clean() {
+   rm -rf $CWD/alertec/__pycache__
+   rm -rf build
+   rm -rf dist
+   rm -rf *.egg-info
+   deactivate
+   rm -rf $CWD/venv
+}
+
+x_run() {
+  if [ ! -e $CWD/venv ]; then
+    x_setup_project
+  fi
+  ## i.e. python app/main.py -t template.json.j2
+  python src/main.py "$@"
+}
+
+x_setup() { 
+    python -m venv venv && \
+    . $CWD/venv/bin/activate && \
+    python $CWD/setup.py install
+    x_activate
+}
+
+#################################################
+#################################################
+#####  ---  LIST SHORTHAND FUNCTIONS ---    #####
+#################################################
+#################################################
+x_ls() {
+  echo "FUNCTIONS"
+  echo "========="
+  declare -F | grep "x_" | sed -E 's/declare -f //'
+}
