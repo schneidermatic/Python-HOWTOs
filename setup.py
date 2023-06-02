@@ -26,7 +26,6 @@ setup(
         ]
     },
     packages=find_packages(),
-    package_data={"template": ["*.j2"]},
     install_requires=[
         'pytest==7.3.1',
         'jinja2==3.1.2',
