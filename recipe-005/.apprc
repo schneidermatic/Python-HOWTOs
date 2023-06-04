@@ -1,6 +1,6 @@
 
 #==============================================================================
-# FILE:          .xrc
+# FILE:          .apprc
 # AUTOHR:        <Firstname, Lastname>
 # DATE:          20XX-XX-XX
 # PURPOSE:       Project specific environment file.
@@ -9,11 +9,14 @@
 ##===============================================
 ## CONFIG
 ##===============================================
-set -o vi
 CWD=`pwd`
-export APPRC_FILE=".pyapprc"
+export APPRC_FILE=".appenv"
 export APPRC_PATH=$HOME/$APPRC_FILE
 export APP_SILENT="false"
+export APP_ORIGIN="app"
+export APP_ENTITY="demoapp"
+export APP_TAG="0.1.0"
+export IMAGE="$APP_ORIGIN/$APP_ENTITY:$APP_TAG"
 
 ## PYTHON SPECIFIC ENV -------------------------
 if [ -e $APPRC_PATH ]
@@ -26,15 +29,15 @@ fi
 if [ -z "$APP_HOME" ]
 then
   echo "Please set \$APP_HOME in '$APPRC_PATH' file !!!"
-  echo "... and source the '$' file again."
+  echo "... and source the '.apprc' file again."
 fi
 
 ##===============================================
 ## CLI SHORTHAND FUNCTIONS
 ##===============================================
-x_activate() { . $CWD/venv/bin/activate; }
+xactivate() { . $CWD/venv/bin/activate; }
 
-x_clean() {
+xclean() {
    rm -rf $CWD/alertec/__pycache__
    rm -rf build
    rm -rf dist
@@ -43,19 +46,32 @@ x_clean() {
    rm -rf $CWD/venv
 }
 
-x_run() {
-  if [ ! -e $CWD/venv ]; then
-    x_setup_project
-  fi
-  ## i.e. python app/main.py -t template.json.j2
-  python src/main.py "$@"
-}
-
-x_setup() { 
+xsetup() { 
     python -m venv venv && \
     . $CWD/venv/bin/activate && \
     python $CWD/setup.py install
     x_activate
+}
+
+xrun() {
+  if [ ! -e $CWD/venv ]; then
+    x_setup_project
+  fi
+  ## i.e. python src/main.py -t template.json.j2
+  python src/main.py "$@"
+}
+
+##===============================================
+## DOCKER SHORTHAND FUNCTIONS
+##===============================================
+xdbuild() {
+  docker build -t $IMAGE .
+}
+
+xdrun() { 
+  docker run -it -v $APP_HOME/resources:/app/resources --rm \
+  --env APP_LOG_LEVEL="INFO" \
+  $IMAGE "$@"; 
 }
 
 #################################################
@@ -63,8 +79,8 @@ x_setup() {
 #####  ---  LIST SHORTHAND FUNCTIONS ---    #####
 #################################################
 #################################################
-x_ls() {
+xls() {
   echo "FUNCTIONS"
   echo "========="
-  declare -F | grep "x_" | sed -E 's/declare -f //'
+  declare -F | sed -E 's/declare -f //' | grep -i '^x.*'
 }
