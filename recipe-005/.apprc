@@ -57,8 +57,8 @@ xrun() {
   if [ ! -e $CWD/venv ]; then
     x_setup_project
   fi
-  ## i.e. python src/main.py -f $(pwd)/resources/templates
-  python -m pyapp "$@"
+  python -m pyapp -f $CWD/resources/templates -L
+  # python -m pyapp "$@"
 }
 
 ##===============================================
