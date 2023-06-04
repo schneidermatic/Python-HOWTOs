@@ -10,8 +10,8 @@
 ## CONFIG
 ##===============================================
 CWD=$(pwd)
-export APPRC_FILE=".appenv"
-export APPRC_PATH=$HOME/$APPRC_FILE
+export APPENV_FILE=".appenv"
+export APPENV_PATH=$HOME/$APPENV_FILE
 export APP_SILENT="false"
 export APP_ORIGIN="app"
 export APP_ENTITY="pyapp"
@@ -19,16 +19,16 @@ export APP_TAG="0.1.0"
 export IMAGE="$APP_ORIGIN/$APP_ENTITY:$APP_TAG"
 
 ## PYTHON SPECIFIC ENV -------------------------
-if [ -e $APPRC_PATH ]
+if [ -e $APPENV_PATH ]
 then
-  . $APPRC_PATH
+  . $APPENV_PATH
 else
-  cp $CWD/$APPRC_FILE $HOME
+  cp $CWD/$APPENV_FILE $HOME
 fi
 
 if [ -z "$APP_HOME" ]
 then
-  echo "Please set \$APP_HOME in '$APPRC_PATH' file !!!"
+  echo "Please set \$APP_HOME in '$APPENV_PATH' file !!!"
   echo "... and source the '.apprc' file again."
 fi
 
@@ -58,7 +58,7 @@ xrun() {
     x_setup_project
   fi
   ## i.e. python src/main.py -f $(pwd)/resources/templates
-  python src/main.py "$@"
+  python -m pyapp "$@"
 }
 
 ##===============================================
