@@ -3,13 +3,13 @@
 # FILE:          .apprc
 # AUTOHR:        <Firstname, Lastname>
 # DATE:          20XX-XX-XX
-# PURPOSE:       Project specific environment file.
+# PURPOSE:       App specific environment file.
 #==============================================================================
 
 ##===============================================
 ## CONFIG
 ##===============================================
-CWD=`pwd`
+CWD=$(pwd)
 export APPRC_FILE=".appenv"
 export APPRC_PATH=$HOME/$APPRC_FILE
 export APP_SILENT="false"
@@ -38,7 +38,7 @@ fi
 xactivate() { . $CWD/venv/bin/activate; }
 
 xclean() {
-   rm -rf $CWD/alertec/__pycache__
+   rm -rf $CWD/src/__pycache__
    rm -rf build
    rm -rf dist
    rm -rf *.egg-info
@@ -57,7 +57,7 @@ xrun() {
   if [ ! -e $CWD/venv ]; then
     x_setup_project
   fi
-  ## i.e. python src/main.py -t template.json.j2
+  ## i.e. python src/main.py -f $(pwd)/resources/templates
   python src/main.py "$@"
 }
 
