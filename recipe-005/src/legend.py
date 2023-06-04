@@ -15,6 +15,6 @@ class Legend:
 \__,_/\___/_/ /_/ /_/\____/\__,_/ .___/ .___/ 
                                /_/   /_/                                               
 ----------
-v{release} - {startup_time}
+v{release}
     '''.format(release=release, startup_time=startup_time)
          print(legend_text, flush=True)

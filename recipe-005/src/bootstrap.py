@@ -13,16 +13,14 @@ class Bootstrap:
       self.release = app_release
       self.config = Config(app_name.split('.')[0],
                            app_release,
-                           str(Path.home()),
-                           f"{ str(Path.home()) }/.{ app_name.split('.')[0] }.pid")
+                           str(Path.home()))
       self.args = CliArgs().parse(self.config)
       self.logger = Logger(self.config, self.args)
 
     def run(self):
-      thread_name = 'Thread-0'
-      self.logger.set_logger(thread_name)
+      self.logger.set_logger()
       logger = self.logger.get_logger()
-      logger.info(f"{thread_name}, {self.config.app_name }.py is started.")
+      logger.info(f"{self.config.app_name }.py is started.")
       program = Program(self.config, self.args, logger)
       program.start()    
 

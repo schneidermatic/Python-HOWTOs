@@ -13,8 +13,8 @@ class Logger():
     def get_logger(self):
         return self.logger
         
-    def set_logger(self, logger_name):
+    def set_logger(self):
         numeric_loglevel = getattr(logging, self.args.loglevel.upper(), None)
         logging.basicConfig(stream=stdout,level=numeric_loglevel,format=self.config.log_format,datefmt=self.config.log_date_format)
         logging.Formatter.converter = time.gmtime
-        self.logger = logging.getLogger(logger_name)
+        self.logger = logging.getLogger(__name__)
