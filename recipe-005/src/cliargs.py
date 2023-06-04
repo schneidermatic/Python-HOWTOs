@@ -16,14 +16,14 @@ class CliArgs():
                                        formatter_class=RawTextHelpFormatter)
 
       parser.add_argument('-f', '--folder',
-                        help='set the template folder - default: templates',
+                        help='set the template folder',
                         dest='folder', default=config.template_folder)
 
       parser.add_argument('-l', '--loglevel',
                         help='set the loglevel [DEBUG|INFO|WARN|ERROR|CRITICAL]',
                         dest='loglevel', default=config.loglevel)
 
-      parser.add_argument('-L', '--Legend', help='hide legend',
+      parser.add_argument('-L', '--Legend', help='show legend',
                         dest='legend', action='store_true', default=config.validate_sys_argv_len) 
 
       parser.add_argument('-q', '--quiet', help='run in quiet mode',
