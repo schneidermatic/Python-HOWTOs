@@ -1,7 +1,7 @@
-from app.config import Config
-from app.cliargs import CliArgs
-from app.logger import Logger
-from app.program import Program
+from pyapp.config import Config
+from pyapp.cliargs import CliArgs
+from pyapp.logger import Logger
+from pyapp.program import Program
 from pathlib import Path
 
 class Bootstrap:
@@ -17,6 +17,6 @@ class Bootstrap:
 
     def run(self):
       logger = self.logger.get_logger()
-      logger.info(f"{self.config.app_name }.py is started.")
+      logger.info(f"{self.config.app_name } is started.")
       program = Program(self.config, self.args, logger)
       program.start()

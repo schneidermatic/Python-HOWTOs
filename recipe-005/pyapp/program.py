@@ -1,7 +1,7 @@
 import os
 import sys
 import time
-from app.template import TemplateHandler
+from pyapp.template import TemplateHandler
 
 class Program():
 
@@ -16,3 +16,5 @@ class Program():
             template_data = template_handler.get_data()
             self.logger.info(template_data)
             time.sleep(1)
+        self.logger.info(f"{self.config.app_name} is stopped.")
+        self.logger.info(f"{self.config.app_name} is a simple Python CLI App Demo!")

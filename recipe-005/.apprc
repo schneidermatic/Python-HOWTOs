@@ -14,7 +14,7 @@ export APPRC_FILE=".appenv"
 export APPRC_PATH=$HOME/$APPRC_FILE
 export APP_SILENT="false"
 export APP_ORIGIN="app"
-export APP_ENTITY="demoapp"
+export APP_ENTITY="pyapp"
 export APP_TAG="0.1.0"
 export IMAGE="$APP_ORIGIN/$APP_ENTITY:$APP_TAG"
 
@@ -71,7 +71,7 @@ xdbuild() {
 xdrun() { 
   docker run -it -v $APP_HOME/resources:/app/resources --rm \
   --env APP_LOG_LEVEL="INFO" \
-  $IMAGE "$@"; 
+  $IMAGE -f /app/resources/templates -L; 
 }
 
 #################################################

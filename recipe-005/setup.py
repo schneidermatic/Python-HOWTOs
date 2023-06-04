@@ -22,10 +22,10 @@ setup(
     ],
    entry_points={
         'console_scripts': [
-            'app = app.__main__:main',
+            'pyapp = pyapp.__main__:main',
         ]
     },
-    packages=find_packages(include=['app', 'app.*']),
+    packages=find_packages(include=['pyapp', 'pyapp.*']),
     install_requires=[
         'pytest==7.3.1',
         'jinja2==3.1.2',

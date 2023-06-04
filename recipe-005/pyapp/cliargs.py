@@ -1,8 +1,8 @@
 import sys
 import argparse
 from argparse import RawTextHelpFormatter
-from app.legend import Legend
-from app.utils import TimeStamp
+from pyapp.legend import Legend
+from pyapp.utils import TimeStamp
 
 class CliArgs():
 
