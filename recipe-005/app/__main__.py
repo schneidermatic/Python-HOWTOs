@@ -1,9 +1,13 @@
  # -*- coding: utf-8 -*-
 
 import sys
-from src.bootstrap import Bootstrap
+from app.bootstrap import Bootstrap
 
-def main(app_name, app_release):
+def main():
+
+   app_name="app"
+   app_release="0.1.0"
+
    try:
       bootstrap = Bootstrap(app_name, app_release)
       bootstrap.run()
@@ -12,6 +16,5 @@ def main(app_name, app_release):
       sys.exit(1)   
 
 if __name__ == "__main__":
-   app_name="demoapp"
-   app_release="0.1.0"
-   main(app_name, app_release)
+
+   main()

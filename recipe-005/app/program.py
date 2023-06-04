@@ -3,7 +3,7 @@
 import os
 import sys
 import time
-from src.template import TemplateHandler
+from app.template import TemplateHandler
 
 class Program():
 

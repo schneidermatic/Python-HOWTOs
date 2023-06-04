@@ -3,8 +3,8 @@
 import sys
 import argparse
 from argparse import RawTextHelpFormatter
-from src.legend import Legend
-from src.utils import TimeStamp
+from app.legend import Legend
+from app.utils import TimeStamp
 
 class CliArgs():
 

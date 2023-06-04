@@ -1,7 +1,7 @@
  # -*- coding: utf-8 -*-
 
 from jinja2 import Environment, select_autoescape, FileSystemLoader
-from src.utils import TimeStamp
+from app.utils import TimeStamp
 import json
 import os
 

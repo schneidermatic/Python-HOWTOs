@@ -1,9 +1,9 @@
 # -*- coding: utf-8 -*-
 
-from src.config import Config
-from src.cliargs import CliArgs
-from src.logger import Logger
-from src.program import Program
+from app.config import Config
+from app.cliargs import CliArgs
+from app.logger import Logger
+from app.program import Program
 from pathlib import Path
 
 class Bootstrap:
@@ -15,7 +15,7 @@ class Bootstrap:
                            app_release,
                            str(Path.home()))
       self.args = CliArgs().parse(self.config)
-      self.logger = Logger(self.config, self.args)
+      self.logger = Logger(self.config, self.args, __name__)
 
     def run(self):
       logger = self.logger.get_logger()

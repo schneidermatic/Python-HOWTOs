@@ -22,10 +22,10 @@ setup(
     ],
    entry_points={
         'console_scripts': [
-            'demoapp = src.main:main',
+            'app = app.__main__:main',
         ]
     },
-    packages=find_packages(),
+    packages=find_packages(include=['app', 'app.*']),
     install_requires=[
         'pytest==7.3.1',
         'jinja2==3.1.2',
