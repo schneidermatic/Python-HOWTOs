@@ -18,11 +18,7 @@ class Bootstrap:
       self.logger = Logger(self.config, self.args)
 
     def run(self):
-      self.logger.set_logger()
       logger = self.logger.get_logger()
       logger.info(f"{self.config.app_name }.py is started.")
       program = Program(self.config, self.args, logger)
       program.start()    
-
-    def start(self):
-      self.run()
