@@ -1,5 +1,3 @@
- # -*- coding: utf-8 -*-
-
 import functools
 import time
 from datetime import datetime, timezone

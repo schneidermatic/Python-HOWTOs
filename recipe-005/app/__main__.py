@@ -1,4 +1,6 @@
- # -*- coding: utf-8 -*-
+"""The main entry point. Invoke as `http' or `python -m httpie'.
+
+"""
 
 import sys
 from app.bootstrap import Bootstrap

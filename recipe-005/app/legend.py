@@ -1,5 +1,3 @@
-# -*- coding: utf-8 -*-
-
 # NOTE: Legend was generated with - 
 #       https://patorjk.com/software/taag/#p=display&f=Slant&t=demoapp
 

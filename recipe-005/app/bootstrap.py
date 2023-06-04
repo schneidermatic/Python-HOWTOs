@@ -1,5 +1,3 @@
-# -*- coding: utf-8 -*-
-
 from app.config import Config
 from app.cliargs import CliArgs
 from app.logger import Logger
