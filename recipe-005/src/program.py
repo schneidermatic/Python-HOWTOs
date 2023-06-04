@@ -18,4 +18,3 @@ class Program():
             template_data = template_handler.get_data()
             self.logger.info(template_data)
             time.sleep(1)
-        
