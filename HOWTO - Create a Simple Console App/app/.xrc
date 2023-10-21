@@ -1,6 +1,6 @@
 
 #==============================================================================
-# FILE:          .apprc
+# FILE:          .xrc
 # AUTOHR:        <Firstname, Lastname>
 # DATE:          20XX-XX-XX
 # PURPOSE:       App specific environment file.
@@ -10,7 +10,7 @@
 ## CONFIG
 ##===============================================
 CWD=$(pwd)
-export APPENV_FILE=".appenv"
+export APPENV_FILE=".xenv"
 export APPENV_PATH=$HOME/$APPENV_FILE
 export APP_SILENT="false"
 export APP_ORIGIN="app"
@@ -23,52 +23,52 @@ if [ -e $APPENV_PATH ]
 then
   . $APPENV_PATH
 else
-  cp $CWD/$APPENV_FILE $HOME
+  cp "$CWD"/$APPENV_FILE $HOME
 fi
 
 if [ -z "$APP_HOME" ]
 then
   echo "Please set \$APP_HOME in '$APPENV_PATH' file !!!"
-  echo "... and source the '.apprc' file again."
+  echo "... and source the '.xrc' file again."
 fi
 
 ##===============================================
 ## CLI SHORTHAND FUNCTIONS
 ##===============================================
-xactivate() { . $CWD/venv/bin/activate; }
+x_activate() { . "$CWD"/venv/bin/activate; }
 
-xclean() {
-   rm -rf $CWD/src/__pycache__
+x_clean() {
+   rm -rf "$CWD"/src/__pycache__
    rm -rf build
    rm -rf dist
    rm -rf *.egg-info
    deactivate
-   rm -rf $CWD/venv
+   rm -rf "$CWD"/venv
 }
 
-xsetup() { 
+x_setup() { 
     python -m venv venv && \
-    . $CWD/venv/bin/activate && \
-    python $CWD/setup.py install
-    xactivate
+    . "$CWD"/venv/bin/activate && \
+    python "$CWD"/setup.py install
+    x_activate
 }
 
-xrun() {
-  if [ ! -e $CWD/venv ]; then
-    x_setup_project
+x_run() {
+  if [ ! -e "$CWD"/venv ]; then
+    x_setup
   fi
-  python -m pyapp -f $CWD/resources/templates -L
-  # python -m pyapp "$@"
+  python -m pyapp -f "$CWD/resources/templates" -L
+  # python -m app "$@"
 }
 
 ##===============================================
 ## DOCKER SHORTHAND FUNCTIONS
 ##===============================================
-xdbuild() {
+x_dbuild() {
   docker build -t $IMAGE .
 }
 
-xdrun() { 
+x_drun() { 
   docker run -it -v $APP_HOME/resources:/app/resources --rm \
   --env APP_LOG_LEVEL="INFO" \
   $IMAGE -f /app/resources/templates -L; 
@@ -79,7 +79,7 @@ xdrun() {
 #####  ---  LIST SHORTHAND FUNCTIONS ---    #####
 #################################################
 #################################################
-xls() {
+x_ls() {
   echo "FUNCTIONS"
   echo "========="
   declare -F | sed -E 's/declare -f //' | grep -i '^x.*'

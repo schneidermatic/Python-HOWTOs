@@ -1,6 +1,6 @@
 
 #==============================================================================
-# SCRIPT:        .pyapprc
+# SCRIPT:        .xrc
 # AUTOHR:        <Firstname, Lastname>
 # DATE:          20XX-XX-XX
 # PURPOSE:       App Configuration file for the $HOME dir.
@@ -12,11 +12,13 @@
 
 ## COMMON ---------------------------------------
 export PYTHONWARNINGS="ignore"
-export PYTHONPATH="/path/to/my/modules/"
+## APP_HOME="$HOME/Python-HOWTOs/HOWTO - Create a Simple Console App/app"
 export APP_HOME="/path/to/my/app"
+## PYTHONPATH="$APP_HOME/pyapp"
+export PYTHONPATH="/path/to/my/modules/"
 
 ## APP SPECIFIC ENVs ----------------------------
-export APP_NAME=DemoApp
+export APP_NAME=PyApp
 export APP_LOG_LEVEL="INFO"
 export APP_TEMPLATE_FOLDER="$HOME"
 export APP_TEMPLATE_FILE="template.json.j2"
