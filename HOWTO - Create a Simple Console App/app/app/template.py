@@ -1,5 +1,5 @@
 from jinja2 import Environment, select_autoescape, FileSystemLoader
-from pyapp.utils import TimeStamp
+from app.utils import TimeStamp
 import json
 import os
 

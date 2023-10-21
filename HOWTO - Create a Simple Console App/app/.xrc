@@ -14,7 +14,7 @@ export APPENV_FILE=".xenv"
 export APPENV_PATH=$HOME/$APPENV_FILE
 export APP_SILENT="false"
 export APP_ORIGIN="app"
-export APP_ENTITY="pyapp"
+export APP_ENTITY="app"
 export APP_TAG="0.1.0"
 export IMAGE="$APP_ORIGIN/$APP_ENTITY:$APP_TAG"
 
@@ -57,7 +57,7 @@ x_run() {
   if [ ! -e "$CWD"/venv ]; then
     x_setup
   fi
-  python -m pyapp -f "$CWD/resources/templates" -L
+  python -m app -f "$CWD/resources/templates" -L
   # python -m app "$@"
 }
 

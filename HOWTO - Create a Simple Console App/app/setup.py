@@ -8,9 +8,9 @@ from setuptools import setup
 base_dir = os.path.dirname(__file__)
 
 setup(
-    name='DemoApp',
+    name='ConsoleApp',
     version='0.1.0',
-    description='Simple Python CLI App',
+    description='Simple Python Console App',
     author='Markus Schneider',
     author_email='markus.schneider73@gmail.com',
     setup_requires='setuptools',
@@ -22,10 +22,10 @@ setup(
     ],
    entry_points={
         'console_scripts': [
-            'pyapp = pyapp.__main__:main',
+            'app = app.__main__:main',
         ]
     },
-    packages=find_packages(include=['pyapp', 'pyapp.*']),
+    packages=find_packages(include=['app', 'app.*']),
     install_requires=[
         'pytest==7.3.1',
         'jinja2==3.1.2',

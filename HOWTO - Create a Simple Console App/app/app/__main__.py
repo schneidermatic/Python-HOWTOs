@@ -1,13 +1,13 @@
-"""The main entry point. Invoke as `pyapp' or `python -m pyapp'.
+"""The main entry point. Invoke as `app' or `python -m app'.
 
 """
 
 import sys
-from pyapp.bootstrap import Bootstrap
+from app.bootstrap import Bootstrap
 
 def main():
 
-   app_name="pyapp"
+   app_name="app"
    app_release="0.1.0"
 
    try:
